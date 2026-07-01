@@ -4,51 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { analyzeImage } from '../lib/gemini';
 import { detectObjects } from '../lib/roboflow';
 import { supabase } from '../lib/supabase';
-
-const PROMPTS = {
-  academic: `Analyze this image as a university professor.
-Identify:
-1. Objects - list the distinct physical objects of educational or functional interest
-2. Context - describe the educational or intellectual setting
-3. Activities - what learning or academic activity appears to be happening
-4. Recommendations - one constructive educational feedback or suggestion
-
-Respond ONLY with valid JSON in this exact shape, no markdown formatting (no \`\`\`json blocks), no extra text:
-{
-  "objects": ["...", "..."],
-  "context": "...",
-  "activities": "...",
-  "recommendations": "..."
-}`,
-  safety: `Analyze this image as a workplace safety inspector.
-Identify:
-1. Objects - list the physical objects that could pose risks or represent safety equipment
-2. Context - describe the safety setting or environment
-3. Activities - what safety hazards, risks, or safe practices are happening
-4. Recommendations - one practical workplace safety recommendation
-
-Respond ONLY with valid JSON in this exact shape, no markdown formatting (no \`\`\`json blocks), no extra text:
-{
-  "objects": ["...", "..."],
-  "context": "...",
-  "activities": "...",
-  "recommendations": "..."
-}`,
-  inventory: `Analyze this image as an asset management clerk.
-Identify:
-1. Objects - list every visible physical asset
-2. Context - describe the storage or environment location
-3. Activities - what state of management or utilization the assets are in
-4. Recommendations - one inventory organization suggestion
-
-Respond ONLY with valid JSON in this exact shape, no markdown formatting (no \`\`\`json blocks), no extra text:
-{
-  "objects": ["...", "..."],
-  "context": "...",
-  "activities": "...",
-  "recommendations": "..."
-}`
-};
+import { PROMPTS } from '../lib/prompts';
 
 export default function ResultScreen({ route, navigation }) {
   const { base64Image, promptKey } = route.params;
