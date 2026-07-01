@@ -1,32 +1,42 @@
 {
   "expo": {
-    "name": "VisionAi",
-    "slug": "VisionAi",
+    "name": "VisionAI",
+    "slug": "VisionAI",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#090a0f"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "VisionAI needs camera access to capture photos for AI-powered visual analysis."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#090a0f"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "permissions": ["CAMERA"]
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-sqlite"
+      "expo-sqlite",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "VisionAI needs camera access to capture photos for AI-powered visual analysis."
+        }
+      ]
     ]
   }
 }
